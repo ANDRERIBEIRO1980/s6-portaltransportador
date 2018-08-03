@@ -1,0 +1,145 @@
+{
+	"codigo": "99999999",
+    "valorFreteCliente" : "25.00",
+    "valorFreteTransportadora" : "25.00",
+    "numeroPedidoEnvio" : "000.04274056X",
+    "numeroPedidoVenda" : "0",
+    "numeroPedidoOriginal" : "405060",
+    "numeroPedidoPai" : "405060",
+    "canalVenda" : "VENDA - LOJA",
+    "entregaAgendada" : true,
+    "horaInicialEntrega" : "08:00:00",
+    "horaFinalEntrega" : "18:00:00",
+    "dataDespacho" : "10/04/2018 15:35:46",
+    "tipoPedidoEnvio" : 1,
+    "dataCriacao" : "10/04/2018 15:35:46",
+    "dataEstimadaEntrega" : "10/04/2018 15:35:46",
+    "metodoEntrega" : "403",
+    "codigoIntegradoEmbarcador" : "150021",
+    "integracaoIntelipost" : true,
+    "diretorioArquivoZip" : "/transportadoras/19_ontime/KitColeta/processados", 
+    "nomeArquivoZip" : "STD_146971353_Kit Coleta_Copy_20180801191123.zip", 
+    "cliente" : {
+        "pessoa" : "PF",
+        "nome" : "SANDRA",
+        "sobreNome" : "AGUIAR",
+        "isCompany" : false,
+        "documento" : "CPF",
+        "documentoCpfCnpj" : "1051701864",
+        "contato" : {
+            "email" : "tuca.furtado@icloud.com",
+            "telefoneFixo" : "21 26987801",
+            "telefoneMovel" : "999 999999999"
+        },
+        "endereco" : {
+            "pais" : "BRAZIL",
+            "estado" : "SP",
+            "cidade" : "BERTIOGA",
+            "cep" : "99999999",
+            "bairro" : "CENTRO",
+            "logradouro" : "AV ANCHIETA",
+            "numero" : "1541",
+            "complemento" : "CASA 132",
+            "referencia" : "COND. CENTER VILLE"
+        }
+    },
+    "complemento" : {
+        "numeroRomaneio" : "75354160",
+        "codigoRota" : "266",
+        "meioTransporte" : "RODOVIARIO",
+        "tipoTransporte" : "CARGA_FRACIONADA",
+        "tipoCarga" : "SECA",
+        "condicaoFrete" : "CIF",
+        "naturezaMercadoria" : "DIVERSOS",
+        "acondicionamento" : "999999992",
+        "volume" : "1089",
+        "valorMercadoria" : "6567.00",
+        "pesoTotal" : "561.00",
+        "pesoCubagem" : "0.00",
+        "incidenciaICMS" : "SIM",
+        "indicadorSeguro" : false,
+        "valorCobrado" : "6567.00",
+        "placaCaminhao" : "",
+        "indicadorPlanoCargaRapida" : false,
+        "valorFrete" : "0",
+        "valorADValorem" : "0",
+        "valorTotalTaxas" : "0",
+        "valorTotalFrete" : "825.00",
+        "acaoDocumento" : "INCLUSAO",
+        "valorICMS" : "993.96",
+        "valorICMSSubstituto" : "0.00",
+        "indicadorBonificacao" : false
+    },
+    "volumes" : [ 
+        {
+            "id" : 999999,
+            "tipo" : "CAIXA",
+            "peso" : "17.000",
+            "largura" : "0.000",
+            "altura" : "0.000",
+            "comprimento" : "0.000",
+            "naturezaProduto" : "0",
+            "quantidadeProduto" : 1,
+            "icmsIsento" : false,
+            "codigoRastreio" : "INEXISTENTE",
+            "notaFiscal" : {
+                "serie" : "000",
+                "numeroNF" : "004274056",
+                "chave" : "35180133041260161419550000042740561000807220",
+                "dataEmissao" : "10/04/2018 15:35:46",
+                "valorTotalProduto" : "199.00",
+                "valorTotal" : "199.00",
+                "codigoCFOP" : "102"
+            },
+            "mercadorias" : [ 
+                {
+                    "peso" : "17.000",
+                    "largura" : "0.900",
+                    "altura" : "0.710",
+                    "comprimento" : "0.350",
+                    "preco" : "199.00",
+                    "descricao" : "RACK EDN RETRO PRINCE A071XL090 BRANCO/SILK       ",
+                    "sku" : "3469581",
+                    "categoria" : "Rack",
+                    "quantidade" : 1,
+                    "imagemUrl" : "https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=3469581"
+                }
+            ]
+        }, 
+        {
+            "id" : 888888,
+            "tipo" : "CAIXA",
+            "peso" : "17.000",
+            "largura" : "0.000",
+            "altura" : "0.000",
+            "comprimento" : "0.000",
+            "naturezaProduto" : "0",
+            "quantidadeProduto" : 1,
+            "icmsIsento" : false,
+            "codigoRastreio" : "INEXISTENTE",
+            "notaFiscal" : {
+                "serie" : "000",
+                "numeroNF" : "004274056",
+                "chave" : "35180133041260161419550000042740561000807220",
+                "dataEmissao" : "10/04/2018 15:35:46",
+                "valorTotalProduto" : "199.00",
+                "valorTotal" : "199.00",
+                "codigoCFOP" : "102"
+            },
+            "mercadorias" : [ 
+                {
+                    "peso" : "17.000",
+                    "largura" : "0.900",
+                    "altura" : "0.710",
+                    "comprimento" : "0.350",
+                    "preco" : "199.00",
+                    "descricao" : "RACK EDN RETRO PRINCE A071XL090 BRANCO/SILK       ",
+                    "sku" : "3469581",
+                    "categoria" : "Rack",
+                    "quantidade" : 1,
+                    "imagemUrl" : "https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=3469581"
+                }
+            ]
+        }
+    ]
+}
