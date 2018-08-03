@@ -14,6 +14,7 @@ import java.util.zip.ZipInputStream;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -117,6 +118,9 @@ public class ArquivoFtpServiceImpl implements ArquivoRecuperavelService {
 			}
 			zinstream.close();
 			this.logger.info("Arquivo descompactado com sucesso.");
+
+			this.deletarArquivosTemporarios(diretorio);
+
 		} catch (final IOException ex) {
 			ex.printStackTrace();
 		}
@@ -138,6 +142,15 @@ public class ArquivoFtpServiceImpl implements ArquivoRecuperavelService {
 		}
 	}
 
+	@Override
+	public void deletarArquivosTemporarios(final String diretorio) {
+		try {
+			FileUtils.forceDelete(new File(diretorio));
+			this.logger.info("Arquivo temporarios excluidos com sucesso.");
+		} catch (final IOException e) {
+			this.logger.error("Erro ao excluir arquivos temporarios: " + diretorio + " Erro: " + e.getMessage());
+		}
+	}
 	private String recuperaDiretorio(final String arquivoZip) {
 		final File arquivo = new File(arquivoZip);
 		return arquivo.getParent().concat(File.separator);

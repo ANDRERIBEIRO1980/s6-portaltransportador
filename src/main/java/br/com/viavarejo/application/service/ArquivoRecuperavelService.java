@@ -14,4 +14,6 @@ public interface ArquivoRecuperavelService {
 	String baixarArquivoZipFtp(String diretorioArquivo, String nomeArquivo, String pedido);
 
 	void descompactaArquivoZip(String arquivo, PedidoKitColeta reversa);
+
+	void deletarArquivosTemporarios(final String diretorio);
 }
