@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.com.viavarejo</groupId>
+	<artifactId>s6-portaltransportador</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.3.RELEASE</version>
+	</parent>
+
+	<url>${git.url}</url>
+
+	<organization>
+		<name>Via Varejo Ltda</name>
+		<url>www.viavarejo.com.br</url>
+	</organization>
+	<developers>
+		<developer>
+			<id>2102421909</id>
+			<name>Cristhiano Jacobino de Freitas</name>
+			<email>cristhiano.freitas@viavarejo.com.br</email>
+		</developer>
+		<developer>
+			<id>7700171948</id>
+			<name>Andre Santos Silva</name>
+			<email>andresantos.silva@viavarejo.com.br</email>
+		</developer>
+		<developer>
+			<id>7700147699</id>
+			<name>Cleberson Pedreira Pauluci</name>
+			<email>cleberson.pauluci@viavarejo.com.br</email>
+		</developer>
+	</developers>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<docencoding>UTF-8</docencoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<s6-core-version>0.0.1-SNAPSHOT</s6-core-version>
+		<jacoco-maven-plugin-version>0.7.9</jacoco-maven-plugin-version>
+		<rest-assured-version>3.0.3</rest-assured-version>
+
+		<git.host>http://bitbucket.viavarejo.com.br</git.host>
+		<git.url>${git.host}/scm/s6dist/${project.artifactId}.git</git.url>
+
+		<sonar.host>http://sonar.viavarejo.com.br</sonar.host>
+		<sonar.language>java</sonar.language>
+		<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+
+		<nexus.host>http://nexus.viavarejo.com.br</nexus.host>
+		<nexus.libsPublicLocalUrl>${nexus.host}/repository/public/</nexus.libsPublicLocalUrl>
+		<nexus.libsReleasesLocalUrl>${nexus.host}/repository/releases/</nexus.libsReleasesLocalUrl>
+		<nexus.libsSnapshotsLocalUrl>${nexus.host}/repository/snapshots/</nexus.libsSnapshotsLocalUrl>
+
+	</properties>
+
+	<scm>
+		<url>${git.url}</url>
+	</scm>
+
+	<dependencies>
+
+		<!-- SPRING -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+
+		<!-- OUTROS -->
+
+		<dependency>
+			<groupId>br.com.viavarejo</groupId>
+			<artifactId>s6-core</artifactId>
+			<version>${s6-core-version}</version>
+		</dependency>
+
+		<!-- TESTE -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${rest-assured-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!--  
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8.13</version>
+		</dependency>
+		-->
+
+		<!-- SFTP -->
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+			<version>0.1.53</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>${start-class}</mainClass>
+					<layout>ZIP</layout>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<delimiters>
+						<delimiter>@</delimiter>
+					</delimiters>
+					<useDefaultDelimiters>false</useDefaultDelimiters>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>sonar-coverage</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.host.url>${sonar.host}</sonar.host.url>
+			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.jacoco</groupId>
+							<artifactId>jacoco-maven-plugin</artifactId>
+							<version>${jacoco-maven-plugin-version}</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<configuration>
+							<append>true</append>
+						</configuration>
+						<executions>
+							<execution>
+								<id>agent-for-ut</id>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>agent-for-it</id>
+								<goals>
+									<goal>prepare-agent-integration</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>jacoco-site</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>report</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Internal Releases</name>
+			<url>${nexus.libsReleasesLocalUrl}</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Internal Snapshot</name>
+			<url>${nexus.libsSnapshotsLocalUrl}</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>ViaVarejo</id>
+			<url>${nexus.libsPublicLocalUrl}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>ViaVarejo</id>
+			<url>${nexus.libsPublicLocalUrl}</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>ViaVarejo-snapshots</id>
+			<url>${nexus.libsPublicLocalUrl}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
